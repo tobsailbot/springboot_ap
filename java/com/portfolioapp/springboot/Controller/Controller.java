@@ -1,7 +1,9 @@
 package com.portfolioapp.springboot.Controller;
 
 import com.portfolioapp.springboot.model.Persona;
+import com.portfolioapp.springboot.model.Skills;
 import com.portfolioapp.springboot.service.IPersonaService;
+import com.portfolioapp.springboot.service.ISkillsService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,34 +36,42 @@ public class Controller {
         return persoServ.verPersonas();
     }  
    
-    /*@PutMapping("/editar/persona/{id}")
-    public Persona editPersona (@PathVariable Long id,
-                                @RequestParam ("nombre") String nuevoNombre,
-                                @RequestParam ("apellido") String nuevoApellido){
-        
-        Persona pers = persoServ.buscarPersona(id);
-        pers.setApellido(nuevoApellido);
-        pers.setNombre(nuevoNombre);
-        
-        persoServ.crearPersona(pers);
-        return pers;
-    
-                                
-                }*/
     
      @PutMapping("/editar/persona/{id}")
     public Persona editPersona2 (@PathVariable Long id,
-                                  @RequestBody Persona nueva   ){
-        
-       /* Persona pers = persoServ.buscarPersona(id);
-        pers.setApellido(nuevoApellido);
-        pers.setNombre(nuevoNombre); */
+                                 @RequestBody Persona nueva   ){
         
         persoServ.crearPersona(nueva); 
-        return nueva;
-    
-                                
+        return nueva;               
                 }
-
+    
+// ------------------------------------------------
+ // ------------------------------------------------
+   // ------------------------------------------------
+    
+    @Autowired
+   private ISkillsService skillServ;
+   
+   @PostMapping ("/new/skill")
+   public void agregarSkills (@RequestBody Skills pers){
+       skillServ.crearSkills(pers);
+   }
+    
+    @GetMapping ("/ver/skill")
+    @ResponseBody
+    public List <Skills> verSkills(){
+        return skillServ.verSkills();
+    }  
+   
+    
+     @PutMapping("/editar/skill/{id}")
+    public Skills editSkills (@PathVariable Long id,
+                                 @RequestBody Skills nueva   ){
+        
+        skillServ.crearSkills(nueva); 
+        return nueva;               
+                }
+    
+    
     
 }

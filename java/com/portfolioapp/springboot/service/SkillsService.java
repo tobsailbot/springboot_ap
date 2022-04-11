@@ -1,7 +1,7 @@
 package com.portfolioapp.springboot.service;
 
-import com.portfolioapp.springboot.model.Persona;
-import com.portfolioapp.springboot.repository.PersonaRepository;
+import com.portfolioapp.springboot.model.Skills;
+import com.portfolioapp.springboot.repository.SkillsRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,34 +10,34 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class PersonaService implements IPersonaService {
+public class SkillsService implements ISkillsService {
     
     
     @Autowired
-    public PersonaRepository persoRepo;
+    public SkillsRepository persoRepo;
 
     @Override
-    public List<Persona> verPersonas() {
+    public List<Skills> verSkills() {
        return persoRepo.findAll();
     }
 
     @Override
-    public void crearPersona(Persona per) {
-        persoRepo.save(per);
+    public void crearSkills(Skills ski) {
+        persoRepo.save(ski);
 }
 
     @Override
-    public void borrarPersona(Long id) {
+    public void borrarSkills(Long id) {
         persoRepo.deleteById(id);
     }
 
     @Override
-    public Persona buscarPersona(Long id) {
+    public Skills buscarSkills(Long id) {
         return persoRepo.findById(id).orElse(null);
    }
 
     @Override
-    public Persona findPersona(Long id) {
+    public Skills findSkills(Long id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
