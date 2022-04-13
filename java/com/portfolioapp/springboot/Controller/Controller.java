@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,6 +72,11 @@ public class Controller {
         skillServ.crearSkills(nueva); 
         return nueva;               
                 }
+    @DeleteMapping("/delete/skill/{id}")
+    public Skills borrarSkills(@PathVariable Long id){
+            skillServ.borrarSkills(id);
+       return null;
+    }
     
     
     
