@@ -1,8 +1,10 @@
 package com.portfolioapp.springboot.Controller;
 
 import com.portfolioapp.springboot.model.Persona;
+import com.portfolioapp.springboot.model.Project;
 import com.portfolioapp.springboot.model.Skills;
 import com.portfolioapp.springboot.service.IPersonaService;
+import com.portfolioapp.springboot.service.IProjectService;
 import com.portfolioapp.springboot.service.ISkillsService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class Controller {
         persoServ.crearPersona(nueva); 
         return nueva;               
                 }
-    
+
 // ------------------------------------------------
  // ------------------------------------------------
    // ------------------------------------------------
@@ -78,6 +80,36 @@ public class Controller {
        return null;
     }
     
+ // ------------------------------------------------
+  // ------------------------------------------------
+   // ------------------------------------------------
     
+    @Autowired
+   private IProjectService projServ;
+   
+   @PostMapping ("/new/project")
+   public void agregarProject (@RequestBody Project proj){
+       projServ.crearProject(proj);
+    }
+    
+    @GetMapping ("/ver/project")
+    @ResponseBody
+    public List <Project> verProject(){
+        return projServ.verProject();
+    }  
+    
+     @PutMapping("/editar/project/{id}")
+    public Project editProject (@PathVariable Long id,
+                                 @RequestBody Project proj   ){
+        
+        projServ.crearProject(proj); 
+        return proj;               
+    }
+    
+    @DeleteMapping("/delete/project/{id}")
+    public Project borrarProject(@PathVariable Long id){
+            projServ.borrarProject(id);
+       return null;
+    }
     
 }

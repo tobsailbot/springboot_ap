@@ -31,15 +31,6 @@ public class SkillsService implements ISkillsService {
         persoRepo.deleteById(id);
     }
 
-    @Override
-    public Skills buscarSkills(Long id) {
-        return persoRepo.findById(id).orElse(null);
-   }
 
-    @Override
-    public Skills findSkills(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
     
 }
