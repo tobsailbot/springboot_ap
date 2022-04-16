@@ -29,6 +29,5 @@ public class ProjectService implements IProjectService {
     public void borrarProject(Long id) {
         persoRepo.deleteById(id);
     }
-
     
 }
