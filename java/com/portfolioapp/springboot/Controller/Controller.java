@@ -1,8 +1,10 @@
 package com.portfolioapp.springboot.Controller;
 
+import com.portfolioapp.springboot.model.Experience;
 import com.portfolioapp.springboot.model.Persona;
 import com.portfolioapp.springboot.model.Project;
 import com.portfolioapp.springboot.model.Skills;
+import com.portfolioapp.springboot.service.IExperienceService;
 import com.portfolioapp.springboot.service.IPersonaService;
 import com.portfolioapp.springboot.service.IProjectService;
 import com.portfolioapp.springboot.service.ISkillsService;
@@ -111,5 +113,37 @@ public class Controller {
             projServ.borrarProject(id);
        return null;
     }
+    
+// ------------------------------------------------
+ // ------------------------------------------------
+   // ------------------------------------------------
+    
+    @Autowired
+   private IExperienceService expServ;
+   
+   @PostMapping ("/new/exp")
+   public void agregarExperience (@RequestBody Experience pers){
+       expServ.crearExperience(pers);
+   }
+    
+    @GetMapping ("/ver/exp")
+    @ResponseBody
+    public List <Experience> verExperience(){
+        return expServ.verExperience();
+    }  
+   
+    
+    @DeleteMapping("/delete/exp/{id}")
+    public Experience borrarExperience(@PathVariable Long id){
+            expServ.borrarExperience(id);
+       return null;
+    }
+    
+ // ------------------------------------------------
+  // ------------------------------------------------
+   // ------------------------------------------------
+
+    
+    
     
 }
