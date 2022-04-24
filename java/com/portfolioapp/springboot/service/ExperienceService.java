@@ -13,21 +13,21 @@ public class ExperienceService implements IExperienceService {
     
     
     @Autowired
-    public ExperienceRepository persoRepo;
+    public ExperienceRepository expRepo;
 
     @Override
     public List<Experience> verExperience() {
-       return persoRepo.findAll();
+       return expRepo.findAll();
     }
 
     @Override
     public void crearExperience(Experience exp) {
-        persoRepo.save(exp);
+        expRepo.save(exp);
 }
 
     @Override
     public void borrarExperience(Long id) {
-        persoRepo.deleteById(id);
+        expRepo.deleteById(id);
     }
 
 

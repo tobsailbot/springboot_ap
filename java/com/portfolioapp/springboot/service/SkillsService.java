@@ -14,21 +14,21 @@ public class SkillsService implements ISkillsService {
     
     
     @Autowired
-    public SkillsRepository persoRepo;
+    public SkillsRepository skillsRepo;
 
     @Override
     public List<Skills> verSkills() {
-       return persoRepo.findAll();
+       return skillsRepo.findAll();
     }
 
     @Override
     public void crearSkills(Skills ski) {
-        persoRepo.save(ski);
+        skillsRepo.save(ski);
 }
 
     @Override
     public void borrarSkills(Long id) {
-        persoRepo.deleteById(id);
+        skillsRepo.deleteById(id);
     }
 
 

@@ -13,21 +13,21 @@ public class ProjectService implements IProjectService {
     
     
     @Autowired
-    public ProjectRepository persoRepo;
+    public ProjectRepository projRepo;
 
     @Override
     public List<Project> verProject() {
-       return persoRepo.findAll();
+       return projRepo.findAll();
     }
 
     @Override
     public void crearProject(Project proj) {
-        persoRepo.save(proj);
+        projRepo.save(proj);
     }
 
     @Override
     public void borrarProject(Long id) {
-        persoRepo.deleteById(id);
+        projRepo.deleteById(id);
     }
     
 }
