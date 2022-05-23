@@ -2,11 +2,13 @@ package com.portfolioapp.springboot.Controller;
 
 import com.portfolioapp.springboot.model.Education;
 import com.portfolioapp.springboot.model.Experience;
+import com.portfolioapp.springboot.model.Login;
 import com.portfolioapp.springboot.model.Persona;
 import com.portfolioapp.springboot.model.Project;
 import com.portfolioapp.springboot.model.Skills;
 import com.portfolioapp.springboot.service.IEducationService;
 import com.portfolioapp.springboot.service.IExperienceService;
+import com.portfolioapp.springboot.service.ILoginService;
 import com.portfolioapp.springboot.service.IPersonaService;
 import com.portfolioapp.springboot.service.IProjectService;
 import com.portfolioapp.springboot.service.ISkillsService;
@@ -162,6 +164,31 @@ public class Controller {
     @DeleteMapping("/delete/edu/{id}")
     public Education borrarEducation(@PathVariable Long id){
             eduServ.borrarEducation(id);
+       return null;
+    }
+    
+    // ------------------------------------------------
+  // ------------------------------------------------
+   // ------------------------------------------------
+
+    @Autowired
+   private ILoginService logServ;
+   
+   @PostMapping ("/new/login")
+   public void agregarLogin (@RequestBody Login log){
+       logServ.crearLogin(log);
+   }
+    
+    @GetMapping ("/ver/login")
+    @ResponseBody
+    public List <Login> verLogin(){
+        return logServ.verLogin();
+    }  
+   
+    
+    @DeleteMapping("/delete/login/{id}")
+    public Login borrarLogin(@PathVariable Long id){
+            logServ.borrarLogin(id);
        return null;
     }
     
